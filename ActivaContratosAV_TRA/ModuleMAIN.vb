@@ -2,7 +2,10 @@
     Dim UsuarioGlobalCorreo As String = "Activaciones@cmoderna.com"
     Dim DS As New ProdDS
     Sub Main()
+        Console.WriteLine("Tradicionales")
         ActivaTRA()
+        Console.WriteLine("Avios")
+        ActivaMinistracionesAV()
     End Sub
 
     Sub ActivaTRA()

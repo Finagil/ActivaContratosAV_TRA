@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1E739743-2A04-424C-8AD5-B40B739B9350}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>ActivaContratosAV_TRA.Module1</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <RootNamespace>ActivaContratosAV_TRA</RootNamespace>
     <AssemblyName>ActivaContratosAV_TRA</AssemblyName>
     <FileAlignment>512</FileAlignment>
