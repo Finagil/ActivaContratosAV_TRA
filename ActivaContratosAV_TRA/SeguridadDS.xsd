@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SeguridadDS" targetNamespace="http://tempuri.org/SeguridadDS.xsd" xmlns:mstns="http://tempuri.org/SeguridadDS.xsd" xmlns="http://tempuri.org/SeguridadDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SeguridadNvaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SeguridadNvaConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ActivaContratosAV_TRA.My.MySettings.GlobalReference.Default.SeguridadNvaConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UsuariosFinagilTableAdapter" GeneratorDataComponentClassName="UsuariosFinagilTableAdapter" Name="UsuariosFinagil" UserDataComponentName="UsuariosFinagilTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectName="SeguridadNva.dbo.Vw_UsuariosFinagil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        nombre, ape_pat, ape_mat, nom_puesto, nom_depto, id_usuario, NombreCompleto, correo, password, estado
+FROM            Vw_UsuariosFinagil</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nombre" DataSetColumn="nombre" />
+              <Mapping SourceColumn="ape_pat" DataSetColumn="ape_pat" />
+              <Mapping SourceColumn="ape_mat" DataSetColumn="ape_mat" />
+              <Mapping SourceColumn="nom_puesto" DataSetColumn="nom_puesto" />
+              <Mapping SourceColumn="nom_depto" DataSetColumn="nom_depto" />
+              <Mapping SourceColumn="id_usuario" DataSetColumn="id_usuario" />
+              <Mapping SourceColumn="NombreCompleto" DataSetColumn="NombreCompleto" />
+              <Mapping SourceColumn="correo" DataSetColumn="correo" />
+              <Mapping SourceColumn="password" DataSetColumn="password" />
+              <Mapping SourceColumn="estado" DataSetColumn="estado" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectName="SeguridadNva.dbo.Vw_UsuariosFinagil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByCredSeguiVobo" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByCredSeguiVobo" GeneratorSourceName="FillByCredSeguiVobo" GetMethodModifier="Public" GetMethodName="GetDataByCredSeguiVobo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByCredSeguiVobo" UserSourceName="FillByCredSeguiVobo">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT NombreCompleto, ape_mat, ape_pat, correo, estado, id_usuario, nom_depto, nom_puesto, nombre, password FROM Vw_UsuariosFinagil WHERE (estado = 'activo') AND (nom_depto = 'JURIDICO') OR (estado = 'Activo') AND (nom_depto = 'CREDITO') OR (estado = 'Activo') AND (nom_depto = 'SEGUROS') OR (estado = 'Activo') AND (nom_depto = 'PLD') OR (estado = 'Activo') AND (nom_depto = 'MESA DE CONTROL') OR (estado = 'Activo') AND (nom_depto = 'OPERACIONES') ORDER BY nom_depto, nombre</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectName="SeguridadNva.dbo.Vw_UsuariosFinagil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByDepto" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByDepto" GeneratorSourceName="FillByDepto" GetMethodModifier="Public" GetMethodName="GetDataByDepto" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByDepto" UserSourceName="FillByDepto">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT NombreCompleto, ape_mat, ape_pat, correo, estado, id_usuario, nom_depto, nom_puesto, nombre, password FROM Vw_UsuariosFinagil WHERE (nom_depto = @Depto) ORDER BY NombreCompleto</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Depto" ColumnName="nom_depto" DataSourceName="" DataTypeServer="varchar(250)" DbType="AnsiString" Direction="Input" ParameterName="@Depto" Precision="0" ProviderType="VarChar" Scale="0" Size="250" SourceColumn="nom_depto" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectName="SeguridadNva.dbo.Vw_UsuariosFinagil" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByUsuario" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByUsuario" GeneratorSourceName="FillByUsuario" GetMethodModifier="Public" GetMethodName="GetDataByUsuario" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByUsuario" UserSourceName="FillByUsuario">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT NombreCompleto, ape_mat, ape_pat, correo, estado, id_usuario, nom_depto, nom_puesto, nombre, password FROM Vw_UsuariosFinagil WHERE (id_usuario = @Usuario)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Usuario" ColumnName="id_usuario" DataSourceName="" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@Usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="id_usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectName="SeguridadNva.dbo.Vw_AnalistaResguardo" DbObjectType="View" FillMethodModifier="Public" FillMethodName="obt_Analista_Resg_FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="obt_Analista_Resg_FillByGetDataBy" GeneratorSourceName="obt_Analista_Resg_FillBy" GetMethodModifier="Public" GetMethodName="obt_Analista_Resg_FillByGetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="obt_Analista_Resg_FillByGetDataBy" UserSourceName="obt_Analista_Resg_FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        NombreCompleto, ape_mat, ape_pat, correo, estado, id_usuario, nom_depto, nom_puesto, nombre, password
+FROM            Vw_AnalistaResguardo
+ORDER BY NombreCompleto</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarCorreo" Modifier="Public" Name="ScalarCorreo" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ScalarCorreo">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        MAX(RTRIM(correo)) AS Correo
+FROM            USUARIO
+WHERE        (id_usuario = @user)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="user" ColumnName="id_usuario" DataSourceName="" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@user" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="id_usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectName="SeguridadNva.dbo.DEPTO" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="ScalarDepto" Modifier="Public" Name="ScalarDepto" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ScalarDepto">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        DEPTO.nom_depto
+FROM            USUARIO INNER JOIN
+                         DEPTO ON USUARIO.id_depto = DEPTO.id_depto
+WHERE        (USUARIO.id_usuario = @user)
+GROUP BY DEPTO.nom_depto</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="user" ColumnName="id_usuario" DataSourceName="" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@user" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="id_usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarNombre" Modifier="Public" Name="ScalarNombre" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="ScalarNombre">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        RTRIM(nombre) + ' ' + RTRIM(ape_pat) AS Name
+FROM            USUARIO
+WHERE        (id_usuario = @user)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="user" ColumnName="id_usuario" DataSourceName="" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@user" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="id_usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="SeguridadNvaConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarUsuario" Modifier="Public" Name="ScalarUsuario" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="ScalarUsuario">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        ISNULL(MAX(nom_depto), '') AS Area
+FROM            Vw_UsuariosFinagil
+WHERE        (id_usuario = @Usuario)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Usuario" ColumnName="id_usuario" DataSourceName="" DataTypeServer="varchar(20)" DbType="AnsiString" Direction="Input" ParameterName="@Usuario" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="id_usuario" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SeguridadDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SeguridadDS" msprop:Generator_UserDSName="SeguridadDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="UsuariosFinagil" msprop:Generator_TableClassName="UsuariosFinagilDataTable" msprop:Generator_TableVarName="tableUsuariosFinagil" msprop:Generator_TablePropName="UsuariosFinagil" msprop:Generator_RowDeletingName="UsuariosFinagilRowDeleting" msprop:Generator_RowChangingName="UsuariosFinagilRowChanging" msprop:Generator_RowEvHandlerName="UsuariosFinagilRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosFinagilRowDeleted" msprop:Generator_UserTableName="UsuariosFinagil" msprop:Generator_RowChangedName="UsuariosFinagilRowChanged" msprop:Generator_RowEvArgName="UsuariosFinagilRowChangeEvent" msprop:Generator_RowClassName="UsuariosFinagilRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ape_pat" msprop:Generator_ColumnVarNameInTable="columnape_pat" msprop:Generator_ColumnPropNameInRow="ape_pat" msprop:Generator_ColumnPropNameInTable="ape_patColumn" msprop:Generator_UserColumnName="ape_pat" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ape_mat" msprop:Generator_ColumnVarNameInTable="columnape_mat" msprop:Generator_ColumnPropNameInRow="ape_mat" msprop:Generator_ColumnPropNameInTable="ape_matColumn" msprop:Generator_UserColumnName="ape_mat" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nom_puesto" msprop:Generator_ColumnVarNameInTable="columnnom_puesto" msprop:Generator_ColumnPropNameInRow="nom_puesto" msprop:Generator_ColumnPropNameInTable="nom_puestoColumn" msprop:Generator_UserColumnName="nom_puesto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nom_depto" msprop:Generator_ColumnVarNameInTable="columnnom_depto" msprop:Generator_ColumnPropNameInRow="nom_depto" msprop:Generator_ColumnPropNameInTable="nom_deptoColumn" msprop:Generator_UserColumnName="nom_depto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="id_usuario" msprop:Generator_ColumnVarNameInTable="columnid_usuario" msprop:Generator_ColumnPropNameInRow="id_usuario" msprop:Generator_ColumnPropNameInTable="id_usuarioColumn" msprop:Generator_UserColumnName="id_usuario" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NombreCompleto" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNombreCompleto" msprop:Generator_ColumnPropNameInRow="NombreCompleto" msprop:Generator_ColumnPropNameInTable="NombreCompletoColumn" msprop:Generator_UserColumnName="NombreCompleto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="153" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="correo" msprop:Generator_ColumnVarNameInTable="columncorreo" msprop:Generator_ColumnPropNameInRow="correo" msprop:Generator_ColumnPropNameInTable="correoColumn" msprop:Generator_UserColumnName="correo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="password" msprop:Generator_ColumnVarNameInTable="columnpassword" msprop:Generator_ColumnPropNameInRow="password" msprop:Generator_ColumnPropNameInTable="passwordColumn" msprop:Generator_UserColumnName="password" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
