@@ -10,6 +10,7 @@
 
     Sub ActivaTRA()
         Dim ta As New ProdDSTableAdapters.Vw_CXP_ContratosPagadosTableAdapter
+        ta.Fill(DS.Vw_CXP_ContratosPagados)
         For Each r As ProdDS.Vw_CXP_ContratosPagadosRow In DS.Vw_CXP_ContratosPagados
             If r.Tipar = "F" Then
                 Dim IvaCap As Decimal = ta.IvaTabla(r.noContrato)
@@ -22,7 +23,7 @@
             End If
             ta.UpdateFechaPago(r.fechaPago.ToString("yyyyMMdd"), r.noContrato)
             ta.ActivaContrato(r.noContrato)
-            If r.FechaActivacion <> 8 Then
+            If r.FechaActivacion.Trim.Length <> 8 Then
                 ta.UpdateFechaActivacion(r.fechaPago.ToString("yyyyMMdd"), r.noContrato)
             End If
             CorreoConfirmacion(r)

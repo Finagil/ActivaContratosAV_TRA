@@ -7043,7 +7043,7 @@ Namespace ProdDSTableAdapters
         Public Overloads Overridable Function UpdateFechaPago(ByVal Fecha As String, ByVal Anexo As String) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(4)
             If (Fecha Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Fecha")
+                command.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 command.Parameters(0).Value = CType(Fecha,String)
             End If
