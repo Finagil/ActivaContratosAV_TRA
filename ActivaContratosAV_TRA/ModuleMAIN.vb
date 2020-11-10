@@ -115,6 +115,7 @@
                              nSaldoFinal, Date.Now.Date, 0, 0, 0, "", "", 0)
 
                 ta.UpdateMinistracion(DR.Anexo, DR.Ciclo, DR.Ministracion, DR.Documento)
+                ta.ActivaAV(DR.Anexo, DR.Ciclo)
             Catch ex As Exception
                 MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", "error", ex.Message)
             End Try
