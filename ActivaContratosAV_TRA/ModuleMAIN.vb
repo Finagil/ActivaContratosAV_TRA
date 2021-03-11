@@ -71,6 +71,8 @@
         Dim nSaldoInicial As Decimal = 0
         Dim nTasaBP As Decimal = 0
         Dim FechaAplicacion As Date
+        Dim tax As New ProdDSTableAdapters.MinistracionSinEdoCtaTableAdapter
+        Dim tx As New ProdDS.MinistracionSinEdoCtaDataTable
 
         ta.TESO_ConfirmaMinistracionesCXP()
         ta.UpdateFechaPagoGastos(diaAnterior.ToString("yyyyMMdd"))
@@ -117,9 +119,17 @@
                 ta.UpdateMinistracion(DR.Anexo, DR.Ciclo, DR.Ministracion, DR.Documento)
                 ta.ActivaAV(DR.Anexo, DR.Ciclo)
             Catch ex As Exception
-                MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", "error", ex.Message)
+                MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", "error DetalleFinagil", ex.Message)
             End Try
         Next
+        Try
+            tax.Fill(tx, Now.AddDays(-10).ToString("yyyyMMdd"))
+            For Each rr As ProdDS.MinistracionSinEdoCtaRow In tx.Rows
+                MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", "error DetalleFinagil", "No pasaron a estado de Cuenta: " & rr.Anexo & rr.Ciclo & rr.Consecutivo & rr.Concepto)
+            Next
+        Catch ex As Exception
+            MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", "error DetalleFinagil", ex.Message)
+        End Try
     End Sub
 
 End Module
